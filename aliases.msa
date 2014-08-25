@@ -1,0 +1,16 @@
+*:/infdis = >>>
+  if(!has_permission('infdis.use'))
+   {die(colorize('&8[&7Ni&4&ox&7iInfDis&8] &cYou do not have permission to do this!'))}
+  if(!array_contains(
+       array('23', '158')
+      ,
+       split(':', get_block_at(pcursor()) )[0]
+      )
+    ){ die(colorize('&8[&7Ni&4&ox&7iInfDis&8] &cNot a dispenser or dropper!')) }
+  @loc = pcursor()
+  @l = get_server_info(0).'.infdis.'.@loc[world].'_'.integer(@loc[x]).'_'.integer(@loc[y]).'_'.integer(@loc[z])
+
+  @l = replace(@l, '-', 'n')
+  store_value(string(@l), yml_encode(get_inventory(@loc)))
+  msg(colorize('&8[&7Ni&4&ox&7iInfDis&8] &eInfinity Enabled'))
+<<<
